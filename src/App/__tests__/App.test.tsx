@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 import App from "../App";
 
 describe("App", () => {
-  test("should render the App component", () => {
+  test("should change the text content when clicked on the button", () => {
     render(<App />);
 
     expect(screen.getByRole("button")).toHaveTextContent("0");
@@ -13,7 +13,14 @@ describe("App", () => {
     const button = screen.getByRole("button");
 
     fireEvent.click(button);
-    
-    expect(screen.getByRole("button")).toHaveTextContent("1");
+    fireEvent.click(button);
+
+    expect(screen.getByRole("button")).toHaveTextContent("2");
+  });
+
+  test("should match the snapshot", () => {
+    const { asFragment } = render(<App />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });
