@@ -1,20 +1,25 @@
 import * as React from "react";
 
 import logo from "../assets/logo.svg";
-import "./App.css";
+import classes from "./App.module.scss";
 
 import { useHandleCount } from "../hooks/useHandleCount";
+import { classExpression } from "@babel/types";
 
 function App() {
   const { count, increaseCount } = useHandleCount(0);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className={classes.app}>
+      <header className={classes.appHeader}>
+        <img src={logo} className={classes.appLogo} alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={increaseCount}>
+          <button
+            className={classes.button}
+            type="button"
+            onClick={increaseCount}
+          >
             count is: {count}
           </button>
         </p>

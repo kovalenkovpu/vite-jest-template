@@ -18,7 +18,8 @@ module.exports = {
   // .ts and .tsx files.  You *can* just use babel-jest for both, if
   // you already have babel set up to compile typescript files.
   transform: {
-    "^.+\\.jsx?$": "babel-jest",
+    // This one will require babel config and additional babel deps.
+    // "^.+\\.jsx?$": "babel-jest",
     "^.+\\.tsx?$": "ts-jest",
   },
   // In webpack projects, we often allow importing things like css files or jpg
