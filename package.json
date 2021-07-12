@@ -21,6 +21,7 @@
     "babel-jest": "^27.0.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
+    "msw": "^0.31.0",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.35.2",
     "ts-jest": "^27.0.3",
@@ -29,5 +30,8 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "src/setupTests.js"
+  },
+  "msw": {
+    "workerDirectory": ""
   }
 }

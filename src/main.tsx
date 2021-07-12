@@ -2,7 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
-import App from "./App/App";
+import App from "./components/App/App";
+import { worker } from "./mocks/browser";
+
+if (process.env.NODE_ENV === "development") {
+  worker.start();
+}
 
 ReactDOM.render(
   <React.StrictMode>
