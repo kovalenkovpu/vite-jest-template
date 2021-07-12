@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 
-import { useHandleCount } from "../useHandleCount";
+import { useHandleCount } from "..";
 
 describe("useHandleCount", () => {
   test("should set initial value", () => {

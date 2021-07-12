@@ -34,4 +34,7 @@ module.exports = {
   },
   // Tells Jest what folders to ignore for tests
   // testPathIgnorePatterns: [`node_modules`, `\\.cache`],
+
+  // IMPORTANT: it's vital to have exactly "setupFilesAfterEnv"
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 };

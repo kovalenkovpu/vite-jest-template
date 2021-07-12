@@ -3,7 +3,7 @@ import * as React from "react";
 import logo from "../../assets/logo.svg";
 import classes from "./App.module.scss";
 
-import { useHandleCount } from "../../hooks/useHandleCount";
+import { useHandleCount } from "../../hooks";
 import { Header } from "../Header/Header";
 
 const App: React.VFC = () => {

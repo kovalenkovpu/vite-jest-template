@@ -5,6 +5,13 @@ exports[`App should match the snapshot 1`] = `
   <div
     class="app"
   >
+    <section
+      class="headerContainer"
+    >
+      <section>
+        User data is loading...
+      </section>
+    </section>
     <header
       class="appHeader"
     >
@@ -13,9 +20,6 @@ exports[`App should match the snapshot 1`] = `
         class="appLogo"
         src="test-file-stub"
       />
-      <p>
-        Hello Vite + React!
-      </p>
       <p>
         <button
           class="button"
