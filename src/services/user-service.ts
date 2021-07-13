@@ -1,13 +1,17 @@
+import { injectable } from "inversify";
+import "reflect-metadata";
+
 interface UserData {
   username: string;
   email: string;
 }
 
-interface IUserServiceInterface {
+interface IUserService {
   fetchUserData: () => Promise<UserData>;
 }
 
-class UserService implements IUserServiceInterface {
+@injectable()
+class UserService implements IUserService {
   fetchUserData = async () => {
     try {
       const response = await fetch("/api/user");
@@ -20,5 +24,5 @@ class UserService implements IUserServiceInterface {
   };
 }
 
-export type { UserData };
+export type { UserData, IUserService };
 export { UserService };

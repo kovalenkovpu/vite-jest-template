@@ -1,8 +1,13 @@
 import * as React from "react";
 
-import { userStore, UserStore } from "./user-store";
+import { DIContainer } from "../../inversify.config";
+import { TYPES } from "../../inversify.types";
 
-const UserStoreContext = React.createContext<UserStore>(userStore);
+import { IUserStore } from "./user-store";
+
+const userStore = DIContainer.get<IUserStore>(TYPES.UserStore);
+
+const UserStoreContext = React.createContext<IUserStore>(userStore);
 
 const UserStoreContextProvider: React.FC = ({ children }) => (
   <UserStoreContext.Provider value={userStore}>

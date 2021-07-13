@@ -1,6 +1,9 @@
-import { action, makeObservable, observable } from "mobx";
+import { injectable, inject } from "inversify";
+import "reflect-metadata";
+import { action, makeObservable, observable, runInAction } from "mobx";
 
 import { UserData, UserService } from "../../services/user-service";
+import { TYPES } from "../../inversify.types";
 
 interface IUserStore {
   user: UserData | null;
@@ -9,18 +12,17 @@ interface IUserStore {
   fetchUserData: () => Promise<void>;
 }
 
+@injectable()
 class UserStore implements IUserStore {
   user: UserData | null;
   isDataLoading: boolean;
 
   private userService: UserService;
 
-  constructor() {
+  constructor(@inject(TYPES.UserService) userService: UserService) {
     this.user = null;
     this.isDataLoading = false;
-
-    // TODO: DI
-    this.userService = new UserService();
+    this.userService = userService;
 
     makeObservable(this, {
       user: observable,
@@ -38,15 +40,18 @@ class UserStore implements IUserStore {
     try {
       const data = await this.userService.fetchUserData();
 
-      this.user = data;
+      // Otherwise we have warning about mutating the state outside of the action
+      runInAction(() => {
+        this.user = data;
+      });
     } catch (error) {
     } finally {
-      this.isDataLoading = false;
+      runInAction(() => {
+        this.isDataLoading = false;
+      });
     }
   };
 }
 
-const userStore = new UserStore();
-
 export type { IUserStore };
-export { UserStore, userStore };
+export { UserStore };
