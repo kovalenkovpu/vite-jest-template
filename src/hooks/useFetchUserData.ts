@@ -1,35 +1,17 @@
 import * as React from "react";
 
-interface UserData {
-  username: string;
-  email: string;
-}
+import { UserStoreContext } from "../stores/user-store/user-store-context";
 
+// Not necessary to put as a separate hook, but just for testing purposes
 function useFetchUserData() {
-  const [isDataLoading, setDataLoading] = React.useState(false);
-  const [data, setUserData] = React.useState<UserData | null>(null);
-  const fetchUserData = async () => {
-    setDataLoading(true);
-
-    try {
-      const response = await fetch("/api/user");
-      const data = await response.json();
-
-      setUserData(data);
-    } catch (error) {
-      console.log("Error", error);
-    } finally {
-      setDataLoading(false);
-    }
-  };
+  const { isDataLoading, user, fetchUserData } =
+    React.useContext(UserStoreContext);
 
   React.useEffect(() => {
     fetchUserData();
   }, []);
 
-  return { isDataLoading, data };
+  return { isDataLoading: isDataLoading, data: user };
 }
-
-export type { UserData };
 
 export { useFetchUserData };

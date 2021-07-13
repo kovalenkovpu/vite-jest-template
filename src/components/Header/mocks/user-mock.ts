@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-import { UserData } from "../../../hooks/useFetchUserData";
+import { UserData } from "../../../stores/user-store/user-store";
 
 const userMockData: UserData = {
   username: "John Doe",
