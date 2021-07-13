@@ -1,7 +1,10 @@
 # vite-jest-template
 
-Setup template for Vite/React + Jest + RTL + RTL/hooks.
+Setup template using:
 
-2 tests created as an example:
- - App.test.tsx
- - useHandleCount.test.ts
+- Vite/React
+- Jest + RTL + RTL/hooks
+- Mobx
+- Inversify.
+
+Also several tests are added to prototype the approach.
