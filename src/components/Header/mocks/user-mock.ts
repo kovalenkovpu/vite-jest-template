@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-import { UserData } from "../../../stores/user-store/user-store";
+import { UserData } from "../../../services/user-service";
 
 const userMockData: UserData = {
   username: "John Doe",

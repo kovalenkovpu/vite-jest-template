@@ -6,7 +6,7 @@ import "@testing-library/jest-dom/extend-expect";
 import App from "../App";
 import { UserStoreContextProvider } from "../../../stores/user-store/user-store-context";
 import { userMockData } from "../../Header/mocks/user-mock";
-import { UserData } from "../../../stores/user-store/user-store";
+import { UserData } from "../../../services/user-service";
 import { server } from "../../../mocks/server";
 
 describe("App", () => {

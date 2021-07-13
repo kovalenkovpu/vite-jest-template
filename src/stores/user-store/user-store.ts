@@ -1,9 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 
-interface UserData {
-  username: string;
-  email: string;
-}
+import { UserData, UserService } from "../../services/user-service";
 
 interface IUserStore {
   user: UserData | null;
@@ -16,9 +13,14 @@ class UserStore implements IUserStore {
   user: UserData | null;
   isDataLoading: boolean;
 
+  private userService: UserService;
+
   constructor() {
     this.user = null;
     this.isDataLoading = false;
+
+    // TODO: DI
+    this.userService = new UserService();
 
     makeObservable(this, {
       user: observable,
@@ -34,8 +36,7 @@ class UserStore implements IUserStore {
     this.isDataLoading = true;
 
     try {
-      const response = await fetch("/api/user");
-      const data = await response.json();
+      const data = await this.userService.fetchUserData();
 
       this.user = data;
     } catch (error) {
@@ -47,5 +48,5 @@ class UserStore implements IUserStore {
 
 const userStore = new UserStore();
 
-export type { UserData, IUserStore };
+export type { IUserStore };
 export { UserStore, userStore };
