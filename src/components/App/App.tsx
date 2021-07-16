@@ -16,7 +16,9 @@ const App: React.VFC = () => {
         <img src={logo} className={classes.appLogo} alt="logo" />
 
         <p>
+          <label htmlFor="increase-button">Click to increase: </label>
           <button
+            id="increase-button"
             className={classes.button}
             type="button"
             onClick={increaseCount}
